@@ -37,4 +37,4 @@ $ ( LOCALRC=$BASHRC_DIR/bash.local.$(uname -n) && touch $LOCALRC && ln -s $LOCAL
 Sources `bash.d`.
 
 ### `bash.d` 
-This is where the bulk of the configuration lays.
+This is where the bulk of the configuration lies.
