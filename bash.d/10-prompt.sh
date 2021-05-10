@@ -35,7 +35,7 @@ function _make_prompt {
     PS1+="\e[1;31m${exit_status} "
   fi
 
-  PS1+="\e[0m\$ "
+  PS1+="\e[0m\\n$ "
 }
 
 PROMPT_DIRTRIM=1 # Trim path of the working directory

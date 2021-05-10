@@ -1,5 +1,5 @@
 #!/bin/bash
-# Minimal bashrc with reasonable defaults 
+# Minimal bashrc with reasonable defaults
 
 # Make sure we're running in an interactive shell.
 if [ -z "$PS1" ]; then return; fi
@@ -8,7 +8,7 @@ if [ -z "$PS1" ]; then return; fi
 BASHRC_DIR="$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")"
 
 # Update window size after each command.
-shopt -s checkwinsize 
+shopt -s checkwinsize
 
 # Avoid spooky accidents.
 set -o noclobber # Use >| instead of > to overwrite files
@@ -24,10 +24,10 @@ bind "'\e[Z': menu-complete-backward"
 bind "set menu-complete-display-prefix on"
 bind "set show-all-if-ambiguous on"
 bind "set completion-display-width -1"
-bind "set colored-stats on"     
+bind "set colored-stats on"
 bind "set bell-style none"
 
-bind "set completion-ignore-case on" 
+bind "set completion-ignore-case on"
 bind "set completion-map-case on"
 bind "set mark-symlinked-directories on"
 
@@ -35,7 +35,7 @@ bind "set mark-symlinked-directories on"
 
 # Bind up/down arrow keys to cycle through history matches.
 bind "'\e[A': history-search-backward"
-bind "'\e[B': history-search-forward" 
+bind "'\e[B': history-search-forward"
 
 shopt -s histappend # Append to history file intead of overwriting it
 shopt -s cmdhist    # Squash multi-line commands into one line
@@ -61,7 +61,7 @@ source_dir() {
   if [ $# -eq 0 ]; then return 1; fi
 
   # Remove trailing slashes
-  local dir="$(shopt -s extglob; echo ${1%%+(/)})" 
+  local dir="$(shopt -s extglob; echo ${1%%+(/)})"
 
   if [ -d "$dir" ]; then
     for file in $dir/*; do

@@ -1,7 +1,6 @@
 #!/bin/bash
 
-countfiles()
-{
+countfiles() {
   local in_cwd=1
   local ext
 
@@ -10,9 +9,9 @@ countfiles()
       -h|--help)
         echo "Usage: ${FUNCNAME[0]} [-r|--recursive] [EXTENSION]"
         return ;;
-      -r|--recursive) 
+      -r|--recursive)
 	in_cwd= ;;
-      *) 
+      *)
         ext="$arg" ;;
     esac
   done
