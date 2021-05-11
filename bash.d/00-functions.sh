@@ -1,6 +1,5 @@
 #!/bin/bash
 
-dcsh() { docker-compose exec $1 /bin/sh; }
 ff() { find . -name "$1"; }
 
 countfiles() {
