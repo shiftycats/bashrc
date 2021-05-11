@@ -18,9 +18,6 @@ alias rm="rm -i"
 
 # COMPLETION
 
-bind "TAB: menu-complete"
-bind "'\e[Z': menu-complete-backward"
-
 bind "set menu-complete-display-prefix on"
 bind "set show-all-if-ambiguous on"
 bind "set completion-display-width -1"
@@ -30,6 +27,9 @@ bind "set bell-style none"
 bind "set completion-ignore-case on"
 bind "set completion-map-case on"
 bind "set mark-symlinked-directories on"
+
+bind "TAB: menu-complete"
+bind "'\e[Z': menu-complete-backward"
 
 # HISTORY
 
