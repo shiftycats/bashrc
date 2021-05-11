@@ -1,6 +1,5 @@
 #!/bin/bash
-
-ff() { find . -name "$1"; }
+# Common functions and aliases
 
 countfiles() {
   local in_cwd=1
@@ -20,3 +19,11 @@ countfiles() {
 
   find . ${in_cwd:+-maxdepth 1} -type f -name "*.${ext:-*}" | wc -l
 }
+
+ff() { find . -name "$1"; }
+
+alias ls="ls --human-readable --color=auto"
+alias lsl="ls -al"
+alias cpv="rsync -ah --info=progress2"
+
+alias rebash="source ~/.bashrc"
