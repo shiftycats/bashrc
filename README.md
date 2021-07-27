@@ -4,17 +4,32 @@
 
 ## Installation
 
+### Linux
 ```bash
 # Set the destination.
 BASHRC_DIR=~/.config/bashrc
 
 # Clone the repository.
-$ git clone https://github.com/shiftycats/bashrc $BASHRC_DIR
+git clone https://github.com/shiftycats/bashrc $BASHRC_DIR
 
-# Symlink it up.
-$ ln -s $BASHRC_DIR/bashrc ~/.bashrc
-$ ln -s $BASHRC_DIR/bashrc.local ~/.bashrc.local # Optional
-$ ln -s $BASHRC_DIR/bash_profile ~/.bash_profile # Optional
+# Create symlinks.
+ln -s $BASHRC_DIR/bashrc ~/.bashrc
+ln -s $BASHRC_DIR/bashrc.local ~/.bashrc.local # Optional
+ln -s $BASHRC_DIR/bash_profile ~/.bash_profile # Optional
+```
+
+### Windows
+```batch
+:: Set the destination.
+set BASHRC_DIR=%USERPROFILE%/.config/bashrc
+
+:: Clone the repository.
+git clone https://github.com/shiftycats/bashrc %BASHRC_DIR%
+
+:: Create symlinks (as administrator).
+mklink %USERPROFILE%\.bashrc %BASHRC_DIR%\bashrc
+mklink %USERPROFILE%\.bashrc.local %BASHRC_DIR%\bashrc.local
+mklink %USERPROFILE%\.bash_profile %BASHRC_DIR%\bash_profile
 ```
 
 ## Files and directories
