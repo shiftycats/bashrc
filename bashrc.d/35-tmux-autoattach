@@ -1,12 +1,16 @@
-#!/bin/bash
+# 35-tmux-autoattach
+# 
+# When TMUX_AUTOATTACH variable is set, first terminal will auto-attach itself 
+# to a persistent session. New disposable tmux sessions will be created for 
+# consecutive terminal windows.
+#
+# This is useful in a setup where you want only one terminal window running and 
+# use tmux for multitasking.
 
-#  Attach terminal to either a persistent tmux session, or a disposable
-#+ one if persistent session is already in use.
+# Attach terminal to either a persistent tmux session, or a disposable one if 
+# persistent session is already in use
 #
-#  This is useful in a setup where you want only one terminal window 
-#+ running and use tmux for multitasking.
-#
-#+ Usage: tmux-autoattach [session_name (default=main)]
+# Usage: tmux-autoattach [session_name (default=main)]
 tmux-autoattach() {
   if ( ! command -v tmux &> /dev/null ) \
        || [[ "$SSH_CLIENT" != "" ]] \
@@ -28,7 +32,7 @@ tmux-autoattach() {
     || command tmux new-session -s "$session"
   fi 2>/dev/null
 
-  # Attach all terminals to a persistent session as new windows.
+  # Attach all terminals to a persistent session as new windows
   # command tmux has-session -t $session 2>/dev/null \
   # || command tmux new-session -d -s $session
   #
@@ -42,3 +46,9 @@ tmux-autoattach() {
   #   command tmux attach-session -t "$session"
   # fi 2>/dev/null
 }
+
+if [ -n "$TMUX_AUTOATTACH" ]; then
+    tmux-autoattach &>/dev/null || true
+fi
+
+# vim: ft=sh:expandtab:ts=4:sw=4

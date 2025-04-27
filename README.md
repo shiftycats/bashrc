@@ -1,55 +1,34 @@
-## Prerequisites
+These are my shell settings.
 
-* `bash >= 4.2`
+I prefer to keep a system-generated `~/.bashrc` and source all my settings from `~/.bashrc.d/` directory.
+The only purpose of `bashrc` file in this repository is to check if session is interactive and load `~/.bashrc.d/`. 
 
-## Installation
+# Installation
 
-### Linux
-```bash
-# Set the destination.
-BASHRC_DIR=~/.config/bashrc
-
-# Clone the repository.
-git clone https://github.com/shiftycats/bashrc $BASHRC_DIR
-
-# Create symlinks.
-ln -s $BASHRC_DIR/bashrc ~/.bashrc
-ln -s $BASHRC_DIR/bashrc.local ~/.bashrc.local # Optional
-ln -s $BASHRC_DIR/bash_profile ~/.bash_profile # Optional
+### 1. Clone the repository
+```sh
+$ git clone https://github.com/shiftycats/bashrc ~/.config/bashrc
 ```
 
-### Windows
-```batch
-:: Set the destination.
-set BASHRC_DIR=%USERPROFILE%/.config/bashrc
+### 2. Install `inputrc` and `bashrc.d`
+```sh
+# Symlink `.inputrc` to enable Vi mode, custom key bindings, and other GNU Readline settings
+$ ln -s ~/.config/bashrc/inputrc ~/.inputrc
 
-:: Clone the repository.
-git clone https://github.com/shiftycats/bashrc %BASHRC_DIR%
+# Create `.bashrc.d` in the home directory if it doesn't exist
+$ mkdir -d ~/.bashrc.d
 
-:: Create symlinks (as administrator).
-mklink %USERPROFILE%\.bashrc %BASHRC_DIR%\bashrc
-mklink %USERPROFILE%\.bashrc.local %BASHRC_DIR%\bashrc.local
-mklink %USERPROFILE%\.bash_profile %BASHRC_DIR%\bash_profile
+# Create symlinks for files in `bashrc.d` to enable them selectively, or enable everything by running:
+$ ln -s ~/.config/bashrc/bashrc.d/* ~/.bashrc.d/
 ```
 
-## Files and directories
+### 3. Install `bashrc` and `bash_profile` (Optional)
 
-### `bash_profile` 
-Sources `~/.bashrc` in interactive login shells.
+This step can be skipped on systems that source `~/.bashrc.d/` by default.
+```sh
+# Source `bashrc` at the end of existing `~/.bashrc` or create a symlink if `~/.bashrc` doesn't exist
+$ ln -s ~/.config/bashrc/bashrc ~/.bashrc || printf "\nsource ~/.config/bashrc/bashrc\n" >> ~/.bashrc
 
-### `bashrc` 
-A clean, barebones rc with sane defaults. 
-
-Sources `~/.bashrc.local`.
-
-### `bashrc.local` 
-Default local config. Replace it with a machine-specific one if needed:
-
-```bash
-$ ( LOCALRC=$BASHRC_DIR/bash.local.$(uname -n) && touch $LOCALRC && ln -s $LOCALRC ~/.bashrc.local )
+# Symlink `.bash_profile` if it doesn't exist
+$ ln -s ~/.config/bashrc/bash_profile ~/.bash_profile
 ```
-
-Sources `bash.d`.
-
-### `bash.d` 
-This is where the bulk of the configuration lies.

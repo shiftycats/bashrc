@@ -1,8 +1,0 @@
-#!/bin/bash
-# Default local rc
-
-# Load everything
-source_dir "$BASHRC_DIR/bash.d"
-
-# Attach to a persistent tmux session
-tmux-autoattach &>/dev/null || true

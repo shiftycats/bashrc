@@ -1,0 +1,54 @@
+# 10-defaults 
+#
+# Collection of sane defaults for a minimal bashrc.
+
+# Update window size after each command
+shopt -s checkwinsize
+
+# Disable completion when input buffer is empty
+shopt -s no_empty_cmd_completion
+
+# Append to history file instead of overwriting it
+shopt -s histappend
+
+# Save commands to history immediately after execution
+if [[ "$PROMPT_COMMAND" != *"history -a"* ]]; then
+    PROMPT_COMMAND="${PROMPT_COMMAND:+${PROMPT_COMMAND};}history -a"
+fi
+
+# Squash multi-line commands into one line
+shopt -s cmdhist
+
+# Set the size of the history file
+HISTSIZE=10000
+HISTFILESIZE=20000
+
+# Use ISO 8610 timestamps
+HISTTIMEFORMAT="%F %T "
+
+# No duplicate entries and commands that start with a space in shell history
+HISTCONTROL=ignoreboth
+
+# A list of commands to exlude from history
+HISTIGNORE="ls:[bf]g:history:clear:exit:pwd"
+
+# Ask for confirmation before overwriting files
+alias cp="cp -i"
+alias mv="mv -i"
+alias rm="rm -i"
+
+# Use >| instead of > to overwrite a file when redirecting output
+set -o noclobber
+
+# Colorful output
+alias ls="ls --human-readable --color=auto"
+alias grep="grep --colour=auto"
+
+# Set default editor to Vi/Vim
+if command -v vim &>/dev/null; then
+    export EDITOR=vim
+else
+    export EDITOR=vi
+fi
+
+# vim: ft=sh:expandtab:ts=4:sw=4

@@ -1,0 +1,36 @@
+# .inputrc
+# 
+# Configuration file for GNU Readline library.
+
+# 8-bit input/output
+set meta-flag on
+set input-meta on
+set convert-meta off
+set output-meta on
+
+set menu-complete-display-prefix on
+set show-all-if-ambiguous on
+set completion-display-width -1
+set colored-stats on
+set bell-style none
+
+set completion-ignore-case on
+set completion-map-case on
+set mark-symlinked-directories on
+
+# Enable Vi mode
+set editing-mode vi
+
+# Change cursor depending on the mode
+set show-mode-in-prompt on
+set vi-cmd-mode-string \1\e[2 q\2
+set vi-ins-mode-string \1\e[5 q\2
+
+TAB: menu-complete
+"\e[Z": menu-complete-backward
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+"\C-j": history-search-backward
+"\C-k": history-search-forward
+"\C-h": backward-char
+"\C-l": forward-char
